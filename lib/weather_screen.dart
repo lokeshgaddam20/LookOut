@@ -110,6 +110,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                const SizedBox(height: 8),
                 // main card
                 SizedBox(
                   width: double.infinity,
@@ -188,7 +189,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     },
                   ),
                 ),
-
                 const SizedBox(height: 20),
                 const Text(
                   'Additional Information',
