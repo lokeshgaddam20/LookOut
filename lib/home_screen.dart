@@ -23,31 +23,36 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextField(
-            controller: _controller,
-            decoration: InputDecoration(
-              hintText: 'Enter a city name',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => WeatherScreen(
-                    cityName: _controller.text,
-                  ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: _controller,
+                decoration: InputDecoration(
+                  hintText: 'Enter a city name',
+                  border: OutlineInputBorder(),
                 ),
-              );
-            },
-            child: const Text('Get Weather'),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => WeatherScreen(
+                        cityName: _controller.text,
+                      ),
+                    ),
+                  );
+                },
+                child: const Text('Get Weather'),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
