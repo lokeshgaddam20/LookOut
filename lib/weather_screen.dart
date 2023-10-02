@@ -8,18 +8,22 @@ import 'package:http/http.dart' as http;
 import 'package:weather_app/secrets.dart';
 
 class WeatherScreen extends StatefulWidget {
-  const WeatherScreen({super.key});
+  final String cityName;
 
+  const WeatherScreen({
+    Key? key,
+    required this.cityName,
+  }) : super(key: key);
   @override
   State<WeatherScreen> createState() => _WeatherScreenState();
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
   late Future<Map<String, dynamic>> weather;
+  String cityName = "";
 
-  Future<Map<String, dynamic>> getCurrentWeather() async {
+  Future<Map<String, dynamic>> getCurrentWeather(String cityName) async {
     try {
-      String cityName = 'London';
       final res = await http.get(
         Uri.parse(
           'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$openWeatherAPIKey',
@@ -41,7 +45,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   void initState() {
     super.initState();
-    weather = getCurrentWeather();
+    cityName = widget.cityName;
+    weather = getCurrentWeather(cityName);
   }
 
   @override
@@ -60,7 +65,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           IconButton(
             onPressed: () {
               setState(() {
-                weather = getCurrentWeather();
+                weather = getCurrentWeather(cityName);
               });
             },
             icon: const Icon(Icons.refresh),
