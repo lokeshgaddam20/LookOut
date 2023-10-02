@@ -31,12 +31,16 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               TextField(
                 controller: _controller,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Enter a city name',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -48,7 +52,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: const Text('Get Weather'),
+                style: ElevatedButton.styleFrom(
+                  elevation: 5, // Shadow elevation
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // Button shape
+                  ),
+                  padding: const EdgeInsets.all(16), // Button padding
+                ),
+                child: const Text(
+                  'Get Weather',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
